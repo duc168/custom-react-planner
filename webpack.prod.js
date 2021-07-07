@@ -39,7 +39,7 @@ module.exports = {
             name: 'customReactPlanner',
             filename: 'customReactPlannerPackage.js',
             exposes: {
-                './customReactPlannerIndex': './src/index.js'
+                './customReactPlannerIndex': './src/bootstrap.js'
             }
         }),
         new htmlPlugin({
