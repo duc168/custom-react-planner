@@ -1,0 +1,31 @@
+steps:  
+  # build docker image
+  - name: gcr.io/cloud-builders/docker
+    args: [
+      'build',
+      '-t', 'gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}:${BRANCH_NAME}_${SHORT_SHA}',
+      '-f', '${_DOCKER_FILE_NAME}',
+      '.']
+  # tag new version to latest
+  - name: gcr.io/cloud-builders/docker
+    args: [
+      'tag', 'gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}:${BRANCH_NAME}_${SHORT_SHA}',
+      'gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}:latest',
+    ]
+  # push to google container registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      "push", "gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}"
+      ]
+  # deploy container to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args: [
+      '-c',
+      'gcloud run deploy ${_MY_PROJECT_NAME} --image gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}:${BRANCH_NAME}_${SHORT_SHA} --region ${_MY_REGION} --platform managed --allow-unauthenticated'
+      ]
+substitutions:
+    _MY_PROJECT_NAME: customReactPlanner # change to the name that you desire
+    _DOCKER_FILE_NAME: Dockerfile # Docker file name to build container image
+    _MY_REGION: asia-southeast1 #asia-southeast1 #singapore -- asia-east1 #taiwan # https://cloud.google.com/run/docs/locations
+timeout: 1234s
