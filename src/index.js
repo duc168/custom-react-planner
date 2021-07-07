@@ -17,7 +17,8 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 window.customReactPlanner = {
-  customCatalog
+  customCatalog: {...customCatalog},
+  customCatalogJson: JSON.stringify(customCatalog)
 };
 
 export default customCatalog
