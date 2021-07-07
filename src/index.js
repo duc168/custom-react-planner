@@ -21,4 +21,6 @@ window.customReactPlanner = {
   customCatalogJson: JSON.stringify(customCatalog)
 };
 
-export default customCatalog
+export const customReactPlanner = {
+  customCatalog
+}
