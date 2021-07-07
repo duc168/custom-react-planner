@@ -25,7 +25,7 @@ steps:
       'gcloud run deploy ${_MY_PROJECT_NAME} --image gcr.io/${PROJECT_ID}/${_MY_PROJECT_NAME}:${BRANCH_NAME}_${SHORT_SHA} --region ${_MY_REGION} --platform managed --allow-unauthenticated'
       ]
 substitutions:
-    _MY_PROJECT_NAME: customReactPlanner # change to the name that you desire
+    _MY_PROJECT_NAME: custom-react-planner # change to the name that you desire
     _DOCKER_FILE_NAME: Dockerfile # Docker file name to build container image
     _MY_REGION: asia-southeast1 #asia-southeast1 #singapore -- asia-east1 #taiwan # https://cloud.google.com/run/docs/locations
 timeout: 1234s
