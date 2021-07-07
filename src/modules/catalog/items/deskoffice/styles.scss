@@ -1,0 +1,35 @@
+.my-svg-alternate {
+  // filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+}
+
+.mapped-smart-desk {
+  position: relative;
+  .deskImg {
+    width: rem(118px);
+    height: rem(72px);
+  }
+  .deskTextContainer {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -110%);
+    background-color: #1174dc;
+    width: rem(32px);
+    height: rem(32px);
+    border-radius: 50%;
+    font-family: CentraNo2;
+    font-style: normal;
+    font-weight: 500;
+    font-size: rem(16px);
+    line-height: rem(26px);
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    .deskText {
+      position: relative;
+      width: 100%;
+    }
+  }
+}
