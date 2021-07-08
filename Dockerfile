@@ -6,5 +6,5 @@ RUN yarn prod
 EXPOSE 8080
 FROM nginx:1.18
 LABEL authors="Duc Tran"
-COPY --from=buildImage /app/dist /usr/share/nginx/html
+COPY --from=buildImage /app/build /usr/share/nginx/html
 COPY nginx-host /etc/nginx/conf.d/default.conf
